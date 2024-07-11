@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+    <head>
+        <title> This is index title</title>
+    </head>
+
+    <body>
+        <div>
+            <form method="POST" action="/formSubmission">
+                <h1>Employee Creation Form</h1>
+                <label for="employeeId">Employee Id: </label>
+                <input type="text" name="employeeId">
+                <br>
+                <label for="employeeGmail">Employee Gmail: </label>
+                <input type="text" name="employeeGmail">
+                <br>
+                <label for="employeeName">Employee Name: </label>
+                <input type="text" name="employeeName">
+                <br>
+                <label for="employeeAge">Employee Age: </label>
+                <input type="text" name="employeeAge">
+                <br>
+                <label for="employeeBirthDay">Employee Birthday: </label>
+                <input type="text" name="employeeBirthDay">
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <!-- <button type="submit">Show the Employees</button> -->
+        <a href="/allEmployees">Show all the employees</a>
+        
+        <hr>
+        <div>
+            
+            <form method="GET" action="/employeeSearch">
+                <h1> Searching Employee </h1>
+                <label for="employeeId">Employee Id: </label>
+                <input name="employeeId">
+                <button type="submit">Submit</button>
+            </form>
+            
+        </div>
+
+        <hr>
+
+        <div>
+            <form method="POST" action="/employeeDeletion?_method=DELETE">
+                <h1> Deleting the employees </h1>
+                <label for="employeeId">Employee Id: </label>
+                <input type="text" name="employeeId">
+                <button type="submit" onclick="deleteReturn()">Submit</button>
+            </form>
+            <div id="deleteResult"></div>
+        </div>
+        
+    </body>
+
+    <script type="module" src="client.js"></script>
+</html>
