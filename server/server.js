@@ -60,7 +60,7 @@ app.get("/employeeSearch", (req, res) => {
     
 })
 
-app.put("/employeeUpdate", (req, res) => {
+app.path("/employeeUpdate", (req, res) => {
     console.log("this is clicked - employeeUpdate")
     const employee = {
         id: req.body.employeeId,
