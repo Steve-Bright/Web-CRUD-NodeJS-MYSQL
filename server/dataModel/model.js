@@ -42,7 +42,7 @@ Employee.search = (employeeId, result) => {
             return;
         }
 
-        console.log("Searched the employee ", res[0])
+        console.log(`Searched the employee of the id ${employeeId}`, res)
         result(null, res[0])
 
         // if (res.length) {
@@ -55,16 +55,21 @@ Employee.search = (employeeId, result) => {
     })
 }
 
-Employee.update = (currentEmployee, result) => {
-    mysql.query("UPDATE employees SET ? ", currentEmployee, (err, res) => {
+Employee.update = (currentEmployeeId, newData, result) => {
+
+    const setClause = Object.entries(newData)
+        .map(([key, value]) => `${key} = "${value}"`)
+        .join(', ');
+
+    mysql.query(`UPDATE employees SET  ${setClause} where id = "e01"`, (err, res) => {
         if(err){
             console.log(err)
             result(err, null)
             return
         }
 
-        console.log("Updated the employee: " + {id: res.insertId, ...employeeId})
-        result(null, {id: res.insertId, ...employeeId})
+        console.log("Updated the employee: " + {id: res.insertId, ...newData})
+        result(null, {id: res.insertId, ...newData})
     })
 }
 

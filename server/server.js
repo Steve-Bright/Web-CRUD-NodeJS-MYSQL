@@ -40,7 +40,6 @@ app.post("/formSubmission", (req, res, next) => {
 })
 
 app.get("/employeeSearch", (req, res) => {
-    console.log(req.query.employeeId)
     // res.sendFile("testing.html", {root: path.join(__dirname, "..", "views")})
     employees.search(req.query.employeeId, (err, data) => {
         if(err){console.log(err)}
@@ -60,16 +59,21 @@ app.get("/employeeSearch", (req, res) => {
     
 })
 
-app.path("/employeeUpdate", (req, res) => {
-    console.log("this is clicked - employeeUpdate")
+app.get("/employeeUpdate", (req, res) => {
+    res.send("Testing")
+})
+
+app.put("/employeeUpdate", (req, res) => {
+    console.log("this is clicked - employeeUpdate: " + req.body.employeeIdU)
     const employee = {
-        id: req.body.employeeId,
-        email: req.body.employeeGmail,
-        employee_name: req.body.employeeName,
-        age: req.body.employeeAge,
-        birthday: req.body.employeeBirthDay
+        id: req.body.employeeIdU,
+        email: req.body.employeeGmailU,
+        employee_name: req.body.employeeNameU,
+        age: req.body.employeeAgeU,
+        birthday: req.body.employeeBirthDayU
     }
-    employees.update(employee, (err, data) => {
+    console.log(employee)
+    employees.update( req.body.employeeIdU, employee, (err, data) => {
         if(err){
             console.log(err)
         }
@@ -79,7 +83,6 @@ app.path("/employeeUpdate", (req, res) => {
     })
        
     // res.send("Updated Successfuly")
-    next()
 })
 
 app.delete("/employeeDeletion", (req, res, next) => {
